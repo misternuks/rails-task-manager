@@ -1,0 +1,16 @@
+<div class="container d-flex flex-column mt-3">
+  <h1><%= @task.title %></h1>
+  <%= link_to 'edit', edit_task_path(@task) %>
+  <div class="card p-3 m-3">
+    <h5>Details:</h5>
+    <%= @task.details %>
+    <div class="flex-row gap-3 mt-3">
+      Completed:
+      <% if @task.completed%>
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked disabled>
+      <% else %>
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled>
+      <% end %>
+    </div>
+</div>
+<%= link_to 'Back to the tasks', '/tasks' %>

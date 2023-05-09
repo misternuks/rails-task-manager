@@ -1,0 +1,22 @@
+<div class="container d-flex flex-column m-5">
+  <h1>Yo what up? Here are my tasks:</h1>
+  <% @tasks.each do |task|%>
+    <div class="card p-3 flex-row justify-content-between gap-3">
+      <div>
+      <% if task.completed%>
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked disabled>
+        <% else %>
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled>
+        <% end %>
+        <%= link_to task.title, task_path(task), class: 'text-decoration-none' %>
+      </div>
+      <div>
+        <%= link_to 'Edit', edit_task_path(task), class: 'text-decoration-none' %>
+        <%= link_to 'Delete', task_path(task), data: { turbo_method: :delete, turbo_confirm: "Delete #{task.title}?" }, class: ' text-decoration-none' %>
+      </div>
+    </div>
+  <% end %>
+  <div class="btn btn-primary mt-3">
+    <%= link_to '+ Add a new task', new_task_path, class: 'text-decoration-none text-white' %>
+  </div>
+</div>
