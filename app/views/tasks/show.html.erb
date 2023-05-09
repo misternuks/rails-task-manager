@@ -1,7 +1,10 @@
 <div class="container d-flex flex-column mt-3">
-  <h1><%= @task.title %></h1>
-  <%= link_to 'edit', edit_task_path(@task) %>
   <div class="card p-3 m-3">
+    <div class='d-flex gap-3 align-items-center'>
+      <h1><%= @task.title %></h1>
+      <%= link_to 'Edit', edit_task_path(@task), class: 'text-decoration-none' %>
+      <%= link_to 'Delete', task_path(@task), data: { turbo_method: :delete, turbo_confirm: "Delete #{@task.title}?" }, class: ' text-decoration-none'  %>
+    </div>
     <h5>Details:</h5>
     <%= @task.details %>
     <div class="flex-row gap-3 mt-3">
@@ -12,5 +15,6 @@
         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled>
       <% end %>
     </div>
+  </div>
+  <%= link_to '< Back to the tasks', '/tasks', class: 'text-decoration-none' %>
 </div>
-<%= link_to 'Back to the tasks', '/tasks' %>
